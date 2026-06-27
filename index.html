@@ -54,26 +54,44 @@
 
   <style>
     @media (max-width: 768px) {
-  /* Force the container to stack cleanly and center its children */
-  .consultation-container, 
-  .free-consultation,
-  section id="consultation" { 
+  /* 1. Target the entire section and force everything inside to stack and center */
+  section, 
+  div[class*="consultation"], 
+  div[class*="quote"], 
+  div[class*="form"] {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 15px !important;
     width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
+    transform: none !important; /* Prevents any accidental shifting translations */
+    position: relative !important;
+    left: 0 !important;
   }
 
-  /* Force the form box to take up clean width without shifting right */
-  .quote-form, 
+  /* 2. Target the actual form element box specifically */
   form, 
-  .form-container {
-    width: 90% !important;
-    margin: 0 auto !important; /* Centers the form box perfectly */
-    left: 0 !important;
-    right: 0 !important;
+  .quote-form,
+  div[class*="card"] {
+    width: 92% !important;
+    max-width: 92% !important;
+    margin: 0 auto !important; /* Perfectly balances left and right gaps */
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Ensure input boxes inside the form stretch safely but don't overflow */
+  input, 
+  textarea, 
+  select {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
